@@ -7,6 +7,13 @@ public class Section {
 	private UUID SemesterID;
 	private UUID SectionID;
 	private int RoomID;
+	
+	public Section(UUID CourseID, UUID SemesterID, int RoomID){
+		this.CourseID = CourseID;
+		this.SemesterID = SemesterID;
+		this.SectionID = UUID.randomUUID();
+		this.RoomID = RoomID;
+	}
 
 	public UUID getCourseID() {
 		return CourseID;

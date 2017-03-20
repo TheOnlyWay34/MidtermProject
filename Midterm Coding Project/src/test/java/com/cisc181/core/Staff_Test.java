@@ -49,8 +49,23 @@ public class Staff_Test {
 		assertEquals(100000, average,.01);
 	}
 	
-	@Test
+	//Throws Exception, but doesn't pass JUnit test for some reason
+	@Test(expected = PersonException.class)
 	public void test2() {
-		
+		Calendar bday1 = new GregorianCalendar(1995, 10, 29);
+		Calendar hiredate = new GregorianCalendar(2014, 5, 17);
+		@SuppressWarnings("unused")
+		Staff s = new Staff("Matthew", "James", "Jones", bday1.getTime(), "234923 Cherry Dr.", "58715988762",
+				"blahblahblah@blah.net", "9-5", 2, 125000, hiredate.getTime(), eTitle.MR);
+	}
+	
+	//Throws Exception, but doesn't pass JUnit test for some reason
+	@Test(expected = PersonException.class)
+	public void test3() {
+		Calendar bday1 = new GregorianCalendar(1907, 10, 29);
+		Calendar hiredate = new GregorianCalendar(2014, 5, 17);
+		Staff s = new Staff("Matthew", "James", "Jones", bday1.getTime(), "234923 Cherry Dr.", "5871598762",
+				"blahblahblah@blah.net", "9-5", 2, 125000, hiredate.getTime(), eTitle.MR);
+		s.PrintAge();
 	}
 }

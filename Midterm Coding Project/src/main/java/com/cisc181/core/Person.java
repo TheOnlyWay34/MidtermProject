@@ -99,6 +99,17 @@ public abstract class Person implements java.io.Serializable {
 		this.setPhone(Phone_number);
 		this.email_address = Email;
 		
+		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+		Pattern p = Pattern.compile(regex);
+		try{
+			Matcher m = p.matcher(phone_number);
+			if(!m.matches()){
+				throw new PersonException("This number is not valid");
+			}
+		}catch(PersonException P){
+			System.out.println("Failed because "+P);
+		}
+		
 	}
 
 	public void PrintName() {
@@ -131,17 +142,6 @@ public abstract class Person implements java.io.Serializable {
 		}
 		catch(PersonException PE){
 			System.out.println("Failed because "+PE);
-		}
-		
-		String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-		Pattern p = Pattern.compile(regex);
-		try{
-			Matcher m = p.matcher(phone_number);
-			if(!m.matches()){
-				throw new PersonException("This number is not valid");
-			}
-		}catch(PersonException P){
-			System.out.println("Failed because "+P);
 		}
 
 		// If birth date is greater than todays date (after 2 days adjustment of
