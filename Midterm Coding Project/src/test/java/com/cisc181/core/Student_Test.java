@@ -12,6 +12,7 @@ public class Student_Test {
 
 	@BeforeClass
 	public static void setup() {
+		
 	}
 
 	@Test
